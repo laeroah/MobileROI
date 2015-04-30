@@ -3,9 +3,11 @@
 one:
   project_id: 
   name: MyString
-  background: MyString
+  width: 1
+  height: 1
 
 two:
   project_id: 
   name: MyString
-  background: MyString
+  width: 1
+  height: 1

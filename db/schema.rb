@@ -11,18 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417040345) do
+ActiveRecord::Schema.define(version: 20150430054353) do
 
   create_table "pages", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "name"
-    t.string   "background"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "pages", ["project_id"], name: "index_pages_on_project_id"
@@ -34,12 +31,34 @@ ActiveRecord::Schema.define(version: 20150417040345) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
   create_table "widgets", force: :cascade do |t|
     t.integer  "page_id"
     t.integer  "type"
     t.string   "link"
     t.string   "description"
     t.string   "name"
+    t.integer  "x"
+    t.integer  "y"
+    t.integer  "width"
+    t.integer  "height"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

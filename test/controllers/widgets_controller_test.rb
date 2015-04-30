@@ -18,7 +18,7 @@ class WidgetsControllerTest < ActionController::TestCase
 
   test "should create widget" do
     assert_difference('Widget.count') do
-      post :create, widget: { description: @widget.description, link: @widget.link, name: @widget.name, page_id: @widget.page_id, type: @widget.type }
+      post :create, widget: { description: @widget.description, height: @widget.height, link: @widget.link, name: @widget.name, page_id: @widget.page_id, type: @widget.type, width: @widget.width, x: @widget.x, y: @widget.y }
     end
 
     assert_redirected_to widget_path(assigns(:widget))
@@ -35,7 +35,7 @@ class WidgetsControllerTest < ActionController::TestCase
   end
 
   test "should update widget" do
-    patch :update, id: @widget, widget: { description: @widget.description, link: @widget.link, name: @widget.name, page_id: @widget.page_id, type: @widget.type }
+    patch :update, id: @widget, widget: { description: @widget.description, height: @widget.height, link: @widget.link, name: @widget.name, page_id: @widget.page_id, type: @widget.type, width: @widget.width, x: @widget.x, y: @widget.y }
     assert_redirected_to widget_path(assigns(:widget))
   end
 

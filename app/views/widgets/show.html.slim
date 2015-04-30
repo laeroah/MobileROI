@@ -1,1 +1,33 @@
+p#notice = notice
 
+p
+  strong Page:
+  = @widget.page
+p
+  strong Type:
+  = @widget.type
+p
+  strong Link:
+  = @widget.link
+p
+  strong Description:
+  = @widget.description
+p
+  strong Name:
+  = @widget.name
+p
+  strong X:
+  = @widget.x
+p
+  strong Y:
+  = @widget.y
+p
+  strong Width:
+  = @widget.width
+p
+  strong Height:
+  = @widget.height
+
+= link_to 'Edit', edit_widget_path(@widget)
+'|
+= link_to 'Back', widgets_path

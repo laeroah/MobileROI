@@ -6,6 +6,10 @@ class CreateWidgets < ActiveRecord::Migration
       t.string :link
       t.string :description
       t.string :name
+      t.integer :x
+      t.integer :y
+      t.integer :width
+      t.integer :height
 
       t.timestamps null: false
     end

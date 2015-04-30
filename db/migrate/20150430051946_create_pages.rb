@@ -3,7 +3,8 @@ class CreatePages < ActiveRecord::Migration
     create_table :pages do |t|
       t.references :project, index: true, foreign_key: true
       t.string :name
-      t.string :background
+      t.integer :width
+      t.integer :height
 
       t.timestamps null: false
     end
