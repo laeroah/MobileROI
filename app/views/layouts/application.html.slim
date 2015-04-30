@@ -13,14 +13,9 @@ html lang="en"
         meta http-equiv="refresh" content="#{@redirect_delay}; url=#{@redirect_url}"
   
   body
-    - flash.each do |key, value|
-        |  <div class="alert alert-
-        = key
-        |  alert-dismissable">
-        button.close[type="button" data-dismiss="alert" aria-hidden="true"]
-          | ×
-        = value
-    
+    = render 'layouts/flash_messages'
+    = render 'layouts/menu'
+      
     - if current_user
       | Welcome 
       = current_user.email 
