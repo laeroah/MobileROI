@@ -11,20 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430034941) do
+ActiveRecord::Schema.define(version: 20150430051956) do
 
   create_table "pages", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "name"
-    t.string   "background"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
     t.integer  "width"
     t.integer  "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "pages", ["project_id"], name: "index_pages_on_project_id"
@@ -42,12 +37,12 @@ ActiveRecord::Schema.define(version: 20150430034941) do
     t.string   "link"
     t.string   "description"
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
     t.integer  "x"
     t.integer  "y"
     t.integer  "width"
     t.integer  "height"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "widgets", ["page_id"], name: "index_widgets_on_page_id"

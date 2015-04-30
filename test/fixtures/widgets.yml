@@ -6,6 +6,10 @@ one:
   link: MyString
   description: MyString
   name: MyString
+  x: 1
+  'y': 1
+  width: 1
+  height: 1
 
 two:
   page_id: 
@@ -13,3 +17,7 @@ two:
   link: MyString
   description: MyString
   name: MyString
+  x: 1
+  'y': 1
+  width: 1
+  height: 1
