@@ -15,6 +15,7 @@ gem 'devise'
 gem 'figaro'
 
 gem 'carrierwave'
+gem 'jquery-ui-rails'
 
 
 group :development, :test do
