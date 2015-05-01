@@ -1,5 +1,10 @@
+
 html, body, .container {
   height: 100%;
+}
+
+.container {
+  min-width: 1170px !important;
 }
 
 .container > .row.editor {
@@ -7,22 +12,41 @@ html, body, .container {
   > div {
     height: 100%;
   }
-}
-
-.bar {
-  border: 2px solid #eee;
-  height: 100%;
-}
-
-.left-bar {
-  .page-img {
-    text-align: center;
+  .left-bar {
+    .page-img {
+      text-align: center;
+    }
   }
+
+  .bar {
+    border: 2px solid #eee;
+    height: 100%;
+  }
+
+  .mobile {
+    position: relative;
+    .iphone6 {
+      margin: 0 auto;
+      width: 50%;
+      text-align: center;
+      img {
+        width: 100%;
+      }
+    }
+    .page-img {
+      position: absolute;
+      top: 70px;
+      left: 157px;
+      img {
+        width: 239px;
+        height: 422px;
+      }
+    }
+  }
+
 }
 
-.iphone-img{
-  height: 100%;
-}
+
 
 .page-row{
   margin-top: 20px;
