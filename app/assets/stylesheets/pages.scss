@@ -44,6 +44,35 @@ html, body, .container {
     }
   }
 
+  .component.current {
+    border: 1px solid red;
+  }
+
+  .component {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+  }
+
+  .component.link {
+    background-color: blue;
+  }
+
+  .component.input {
+    background-color: yellow;
+  }
+
+  .right-bar {
+    .components {
+      .component {
+        margin: 20px auto;
+      }
+    }
+    .property {
+      text-align: center;
+    }
+  }
+
 }
 
 
@@ -53,7 +82,7 @@ html, body, .container {
   margin-bottom: 20px;
 }
 
-#draggable {
+.draggable {
   width: 150px;
   height: 150px;
   padding: 0.5em;

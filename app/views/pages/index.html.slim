@@ -5,8 +5,9 @@
     .mobile
       .iphone6
         img src=image_path('iPhone6-silver.png')
-      .page-img
-        / img src='/uploads/page/image/1/740x490.jpg'
+      - @project.pages.each do |page|
+        .page-img data-page-id=page.id
+          img src=page.image.url
         img src=''
   .col-xs-3
     = render 'commons/right_bar'
