@@ -1,7 +1,11 @@
-.row
-  .col-xs-3
-    = render 'commons/left_bar', :locals => {:pages => @pages}
-  .col-xs-6
-    img src=image_path('iPhone 6 Silver.png')
-  .col-xs-3
-    = render 'commons/right_bar'
+= render 'layouts/flash_messages'
+= render 'layouts/menu'
+  
+.container    
+  .row
+    .col-xs-3
+      = render 'commons/left_bar', :locals => {:pages => @pages}
+    .col-xs-6
+      img src=image_path('iPhone 6 Silver.png')
+    .col-xs-3
+      = render 'commons/right_bar'
