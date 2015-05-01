@@ -1,4 +1,4 @@
-= form_for @widget do |f|
+= form_for [@project, @page, @widget], html: {class: 'form-horizontal'} do |f|
   - if @widget.errors.any?
     #error_explanation
       h2 = "#{pluralize(@widget.errors.count, "error")} prohibited this widget from being saved:"
@@ -6,31 +6,46 @@
         - @widget.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :page
-    = f.text_field :page
-  .field
-    = f.label :type
-    = f.number_field :type
-  .field
-    = f.label :link
-    = f.text_field :link
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :x
-    = f.number_field :x
-  .field
-    = f.label :y
-    = f.number_field :y
-  .field
-    = f.label :width
-    = f.number_field :width
-  .field
-    = f.label :height
-    = f.number_field :height
-  .actions = f.submit
+  .form-group
+    = label_tag 'project', 'project', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = label_tag 'project', @project.name, class: 'form-control'
+  .form-group
+    = label_tag 'page', 'page', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = label_tag 'page', @page.name, class: 'form-control'
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :description, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :description, class: 'form-control' 
+  .form-group
+    = f.label :type, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :type, class: 'form-control'
+  .form-group
+    = f.label :link, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :link, class: 'form-control'
+  .form-group
+    = f.label :x, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :x, class: 'form-control'
+  .form-group
+    = f.label :y, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :y, class: 'form-control'
+  .form-group
+    = f.label :width, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :width, class: 'form-control'
+  .form-group
+    = f.label :height, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :height, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      .actions = f.submit class: 'btn btn-default'
