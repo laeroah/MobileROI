@@ -7,9 +7,9 @@
           li = message
 
   .form-group
-    = f.label :project, class: 'col-sm-2 control-label'
+    = label_tag 'project', 'project', class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.label @project.name, class: 'form-control'
+      = label_tag 'project', @project.name, class: 'form-control'
   .form-group
     = f.label :name, class: 'col-sm-2 control-label'
     .col-sm-10

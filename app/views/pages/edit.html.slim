@@ -2,7 +2,6 @@ h1 Editing page
 
 == render 'form'
 
-= link_to 'Show', @page
+= link_to 'Show', [@project, @page]
 '|
-= link_to 'Back', pages_path
-
+= link_to 'Back', project_pages_path
