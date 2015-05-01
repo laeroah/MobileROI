@@ -44,6 +44,21 @@ html, body, .container {
     }
   }
 
+  .component.show-close-btn {
+  }
+
+  .component.link {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  .right-bar {
+    .component.link {
+      margin: 20px auto;
+    }
+  }
+
 }
 
 
@@ -53,7 +68,7 @@ html, body, .container {
   margin-bottom: 20px;
 }
 
-#draggable {
+.draggable {
   width: 150px;
   height: 150px;
   padding: 0.5em;
