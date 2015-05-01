@@ -6,13 +6,17 @@ $ ->
 
   pages_links = {}
 
-  # $('.right-bar .property .pages').hide()
+  $('.right-bar .property .pages').hide()
+  $('.mobile .page-img').hide()
+
   current_component = null
 
 
   $('.left-bar .page-img').click ->
-    page_img_sr = $(this).find('img').attr 'src'
-    $('.mobile .page-img img').attr 'src', page_img_sr
+    page_id = $(this).data 'page-id'
+    $('.mobile .page-img.current').removeClass('current').hide()
+
+    $('.mobile .page-img[data-page-id=' + page_id + ']').addClass('current').show()
 
   $('.right-bar .property .pages select').change ->
     if current_component?
@@ -48,17 +52,20 @@ $ ->
       current_component = null
 
   $('.right-bar .components .component').click ->
-    component = $(this).clone().appendTo('.mobile .page-img').uniqueId().css
+    if $('.mobile .page-img.current').length < 1
+      return
+
+    component = $(this).clone().appendTo('.mobile .page-img.current').uniqueId().css
       position: 'absolute'
       top: 0
       left: 0
     .draggable
-      containment: '.mobile .page-img'
+      containment: '.mobile .page-img.current'
       # snap: '.mobile .page-img'
       # snapMode: 'inner'
       # snapTolerance: '50'
       scroll: false
-      appendTo: '.mobile .page-img'
+      # appendTo: '.mobile .page-img.current'
       start: ->
         change_component component
       stop: (event, ui) ->
