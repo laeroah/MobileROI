@@ -44,18 +44,32 @@ html, body, .container {
     }
   }
 
-  .component.show-close-btn {
+  .component.current {
+    border: 1px solid red;
+  }
+
+  .component {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
   }
 
   .component.link {
-    width: 100px;
-    height: 100px;
-    background-color: red;
+    background-color: blue;
+  }
+
+  .component.input {
+    background-color: yellow;
   }
 
   .right-bar {
-    .component.link {
-      margin: 20px auto;
+    .components {
+      .component {
+        margin: 20px auto;
+      }
+    }
+    .property {
+      text-align: center;
     }
   }
 

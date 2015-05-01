@@ -1,3 +1,17 @@
 .bar.right-bar
-  .component.link
-    | Link Widget
+  .components
+    h3 Components
+    .component.link
+      | Link Widget
+      
+    .component.input
+      | Input Widget
+      
+  .property
+    h3 Component Property
+    button.delete.btn.btn-default 删除
+    br
+    br
+    .form-group.pages
+      label Pages
+      = select_tag 'pages', options_from_collection_for_select(@project.pages, :id, :name), prompt: 'select a page', class: 'form-control'
