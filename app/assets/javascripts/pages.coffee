@@ -3,4 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#draggable').clone().draggable()
+  $('.left-bar .page-img').click ->
+    page_img_sr = $(this).find('img').attr 'src'
+    $('.mobile .page-img img').attr 'src', page_img_sr
+  $('#draggable').draggable()
