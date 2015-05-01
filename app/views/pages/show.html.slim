@@ -7,6 +7,9 @@ p
   strong Name:
   = @page.name
 p
+  strong Image:
+  = image_tag @page.image.url.to_s, size: '100x100'
+p
   strong Width:
   = @page.width
 p

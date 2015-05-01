@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430060640) do
+ActiveRecord::Schema.define(version: 20150501004913) do
 
   create_table "pages", force: :cascade do |t|
     t.integer  "project_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150430060640) do
     t.integer  "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
   add_index "pages", ["project_id"], name: "index_pages_on_project_id"

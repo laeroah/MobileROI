@@ -14,6 +14,8 @@ gem 'slim-rails'
 gem 'devise'
 gem 'figaro'
 
+gem 'carrierwave'
+
 
 group :development, :test do
   gem 'byebug'
