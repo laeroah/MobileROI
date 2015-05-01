@@ -1,15 +1,6 @@
 .bar.left-bar
-  table
-    tbody
-      - locals[:pages].each do |page|
-        tr
-          td
-          td
-            = image_tag page.image.url.to_s, size: '70x160'
-          td
-        tr
-      tr
-        td
-        td
-          = link_to 'Add Page', new_page_path
-        td
+  .list-group
+    - @pages.each do |page|
+      .list-group-item.page-img
+        = image_tag page.image.url.to_s, size: '70x160'
+    = link_to 'Add Page', new_project_page_path(@project), class: 'list-group-item'

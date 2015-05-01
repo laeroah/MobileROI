@@ -17,19 +17,3 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
-
-html, body, .container {
-  height: 100%;
-}
-
-.container > .row {
-  height: 100%;
-  > div {
-    height: 100%;
-  }
-}
-
-.bar {
-  border: 2px solid #eee;
-  height: 100%;
-}

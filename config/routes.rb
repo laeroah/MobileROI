@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  root 'static_pages#index'
+  root 'projects#index'
   devise_for :users
+
   resources :widgets
-  resources :pages
-  resources :projects
+
+  resources :projects do
+    resources :pages
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
