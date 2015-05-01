@@ -20,7 +20,7 @@ table
     - @widgets.each do |widget|
       tr
         td = widget.page
-        td = widget.type
+        td = widget.widget_type
         td = widget.link
         td = widget.description
         td = widget.name
@@ -28,9 +28,6 @@ table
         td = widget.y
         td = widget.width
         td = widget.height
-        td = link_to 'Show', widget
-        td = link_to 'Edit', edit_widget_path(widget)
-        td = link_to 'Destroy', widget, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 
