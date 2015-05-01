@@ -1,23 +1,24 @@
-/ h1 Listing projects
-/ 
-/ table
-/   thead
-/     tr
-/       th Name
-/       th Description
-/       th
-/       th
-/       th
-/ 
-/   tbody
-/     - @projects.each do |project|
-/       tr
-/         td = project.name
-/         td = project.description
-/         td = link_to 'Show', project
-/         td = link_to 'Edit', edit_project_path(project)
-/         td = link_to 'Destroy', project, data: {:confirm => 'Are you sure?'}, :method => :delete
-/ 
-/ br
-/ 
-/ = link_to 'New Project', new_project_path
+ h1 Listing projects
+
+ table
+   thead
+     tr
+       th Name
+       th Description
+       th
+       th
+       th
+
+   tbody
+     - @projects.each do |project|
+       tr.row
+         td.col-xs-3 = project.name
+         td.col-xs-3 = project.description
+         td.col-xs-3 = link_to 'Design', project
+         td.col-xs-3 = link_to 'Show', project
+         td.col-xs-1 = link_to 'Edit', edit_project_path(project)
+         td.col-xs-1 = link_to 'Destroy', project, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+ br
+
+ = link_to 'New Project', new_project_path
