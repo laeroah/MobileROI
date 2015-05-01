@@ -1,7 +1,7 @@
 .bar.left-bar
   table
     tbody
-      - locals[:pages].each do |page|
+      - @pages.each do |page|
         tr
           td
           td
@@ -11,5 +11,5 @@
       tr
         td
         td
-          = link_to 'Add Page', new_page_path
+          = link_to 'Add Page', new_project_page_path(@project)
         td

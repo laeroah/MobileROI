@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :set_project
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   # GET /pages
@@ -14,7 +15,7 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    @page = Page.new
+    @page = @project.pages.new
   end
 
   # GET /pages/1/edit
@@ -24,7 +25,7 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
-    @page = Page.new(page_params)
+    @page = @project.pages.new(page_params)
 
     respond_to do |format|
       if @page.save
@@ -62,12 +63,14 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_page
-      @page = Page.find(params[:id])
+      @page = @project.pages.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
     def page_params
       params.require(:page).permit(:project_id, :name, :image, :width, :height)
     end
