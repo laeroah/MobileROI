@@ -11,12 +11,18 @@ $ ->
 
   current_component = null
 
-
+  # switches to a different page
   $('.left-bar .page-img').click ->
     page_id = $(this).data 'page-id'
+    
+    # hide current image
     $('.mobile .page-img.current').removeClass('current').hide()
 
+    # show new image
     $('.mobile .page-img[data-page-id=' + page_id + ']').addClass('current').show()
+    
+    # add existing widgets
+    widgets = gon.widgets[page_id]
 
   $('.right-bar .property .pages select').change ->
     if current_component?
