@@ -1,4 +1,5 @@
 class WidgetsController < ApplicationController
+  before_action :set_page 
   before_action :set_widget, only: [:show, :edit, :update, :destroy]
 
   # GET /widgets
@@ -14,7 +15,7 @@ class WidgetsController < ApplicationController
 
   # GET /widgets/new
   def new
-    @widget = Widget.new
+    @widget = @page.widgets.new
   end
 
   # GET /widgets/1/edit
@@ -24,11 +25,11 @@ class WidgetsController < ApplicationController
   # POST /widgets
   # POST /widgets.json
   def create
-    @widget = Widget.new(widget_params)
+    @widget = @page.widgets.new(widget_params)
 
     respond_to do |format|
       if @widget.save
-        format.html { redirect_to @widget, notice: 'Widget was successfully created.' }
+        format.html { redirect_to [@project, @page, @widget], notice: 'Widget was successfully created.' }
         format.json { render :show, status: :created, location: @widget }
       else
         format.html { render :new }
@@ -66,9 +67,14 @@ class WidgetsController < ApplicationController
     def set_widget
       @widget = Widget.find(params[:id])
     end
+    
+    def set_page
+      @project = Project.find(params[:project_id])
+      @page = Page.find(params[:page_id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def widget_params
-      params.require(:widget).permit(:page_id, :type, :link, :description, :name, :x, :y, :width, :height)
+      params.require(:widget).permit(:project_id, :page_id, :widget_type, :link, :description, :name, :x, :y, :width, :height)
     end
 end

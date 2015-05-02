@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501004913) do
+ActiveRecord::Schema.define(version: 20150501220752) do
 
   create_table "pages", force: :cascade do |t|
     t.integer  "project_id"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20150501004913) do
 
   create_table "widgets", force: :cascade do |t|
     t.integer  "page_id"
-    t.integer  "type"
     t.string   "link"
     t.string   "description"
     t.string   "name"
@@ -63,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150501004913) do
     t.integer  "height"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "widget_type"
   end
 
   add_index "widgets", ["page_id"], name: "index_widgets_on_page_id"

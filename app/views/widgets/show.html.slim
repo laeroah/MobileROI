@@ -5,7 +5,7 @@ p
   = @widget.page
 p
   strong Type:
-  = @widget.type
+  = @widget.widget_type
 p
   strong Link:
   = @widget.link
@@ -28,6 +28,6 @@ p
   strong Height:
   = @widget.height
 
-= link_to 'Edit', edit_widget_path(@widget)
+= link_to 'Edit', edit_project_page_widget_path(@project, @page, @widget)
 '|
-= link_to 'Back', widgets_path
+= link_to 'Back', project_page_widgets_path
