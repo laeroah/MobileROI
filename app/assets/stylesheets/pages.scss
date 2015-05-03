@@ -46,16 +46,18 @@ html, body, .container {
 
   .component.current {
     border: 1px solid red;
+    border-style: dashed;
   }
 
   .component {
+    text-align: center;
     width: 100px;
     height: 100px;
     cursor: pointer;
   }
 
   .component.link {
-    background-color: blue;
+    background-color: rgba(135, 206, 255, 0.7);;
   }
 
   .component.input {
@@ -69,7 +71,7 @@ html, body, .container {
       }
     }
     .property {
-      text-align: center;
+      text-align: left;
     }
   }
 

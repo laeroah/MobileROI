@@ -1,5 +1,5 @@
 class AddWidgetTypeToWidgets < ActiveRecord::Migration
   def change
-    add_column :widgets, :widget_type, :integer
+    add_column :widgets, :widget_type, :string
   end
 end
