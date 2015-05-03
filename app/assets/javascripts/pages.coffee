@@ -68,11 +68,12 @@ $ ->
         widget_type = 1
         if $(this).hasClass("link")
           link =  pages_links[widget_id]
-          widget_type = 0
+          widget_type = "link"
         if widget_id?
           # update widget
+          short_widget_id = widget_id.substring(6)
           data = {
-            'widget[id]' : widget_id,
+            'widget[id]' : short_widget_id,
             'widget[page_id]' : page_id,
             'widget[link]' : link ,
             'widget[description]' : '',
@@ -86,7 +87,7 @@ $ ->
           console.log("page_id = " + page_id)
           $.ajax
             type: 'PUT'
-            url: '/projects/' + project_id + '/pages/' + page_id + '/widgets/' + widget_id + ".json?format=json"
+            url: '/projects/' + project_id + '/pages/' + page_id + '/widgets/' + short_widget_id + ".json?format=json"
             data: data
             contentType: 'application/x-www-form-urlencoded'
             dataType: 'json'
