@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   root 'projects#index'
   devise_for :users
-
   resources :projects do
     resources :pages do
       resources :widgets
     end 
   end
-  
+
+
+
   get 'demo', :to => 'static_pages#index'
   get 'demo_project/:project_id', :to => 'static_pages#project'
   get 'demo_project/:project_id/page/:id', :to => 'static_pages#page'

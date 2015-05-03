@@ -11,7 +11,7 @@ nav.navbar.navbar-default[role="navigation"]
     #navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li
-          = link_to 'Projects', '#'
+          = link_to "Projects" , projects_url
         - if current_user
           li
             = link_to current_user.name,edit_user_registration_path

@@ -54,11 +54,79 @@ $ ->
       $(current_component).remove()
       current_component = null
 
+  $('.right-bar .property button.save').click ->
+    $('.mobile .page-img').each ->
+      project_id = $(this).attr('project-id')
+      page_id = $(this).attr('data-page-id')
+      $('.component', this).each ->
+        widget_id = $(this).attr('id')
+        x = $(this).position().left
+        y = $(this).position().top
+        width = $(this).width()
+        height = $(this).height()
+        link = ''
+        widget_type = 1
+        if $(this).hasClass("link")
+          link =  pages_links[widget_id]
+          widget_type = 0
+        if widget_id?
+          # update widget
+          data = {
+            'widget[id]' : widget_id,
+            'widget[page_id]' : page_id,
+            'widget[link]' : link ,
+            'widget[description]' : '',
+            'widget[name]' : '',
+            'widget[x]' : x ,
+            'widget[y]' : y ,
+            'widget[width]' : width,
+            'widget[height]' : height,
+            'widget[widget_type]' : widget_type
+          }
+          console.log("page_id = " + page_id)
+          $.ajax
+            type: 'PUT'
+            url: '/projects/' + project_id + '/pages/' + page_id + '/widgets/' + widget_id + ".json?format=json"
+            data: data
+            contentType: 'application/x-www-form-urlencoded'
+            dataType: 'json'
+            success: (msg) ->
+            error: (e1) ->
+              alert 'Error - ' + e1.toString()
+              return
+        else
+          # create widget
+          data = {
+            'widget[page_id]' : page_id,
+            'widget[link]' : link ,
+            'widget[description]' : '',
+            'widget[name]' : '',
+            'widget[x]' : x ,
+            'widget[y]' : y ,
+            'widget[width]' : width,
+            'widget[height]' : height,
+            'widget[widget_type]' : widget_type
+          }
+          $.ajax
+            type: 'POST'
+            url: '/projects/' + project_id + '/pages/' + page_id + '/widgets.json?format=json'
+            data: data
+            contentType: 'application/x-www-form-urlencoded'
+            dataType: 'json'
+            success: (msg) ->
+            error: (e1) ->
+              alert 'Error - ' + e1.toString()
+              return
+
+
+
+
+
   $('.right-bar .components .component').click ->
     if $('.mobile .page-img.current').length < 1
       return
 
-    component = $(this).clone().appendTo('.mobile .page-img.current').uniqueId().css
+    component = $(this).clone().appendTo('.mobile .page-img.current').css
       position: 'absolute'
       top: 0
       left: 0
