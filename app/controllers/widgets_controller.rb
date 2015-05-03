@@ -30,7 +30,7 @@ class WidgetsController < ApplicationController
     respond_to do |format|
       if @widget.save
         format.html { redirect_to [@project, @page, @widget], notice: 'Widget was successfully created.' }
-        format.json { render :show, status: :created, location: @widget }
+        format.json { render :show, status: :created, location: @project, @page, @widget }
       else
         format.html { render :new }
         format.json { render json: @widget.errors, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class WidgetsController < ApplicationController
     respond_to do |format|
       if @widget.update(widget_params)
         format.html { redirect_to @widget, notice: 'Widget was successfully updated.' }
-        format.json { render :show, status: :ok, location: @widget }
+        format.json { render :show, status: :ok, location: @project, @page, @widget  }
       else
         format.html { render :edit }
         format.json { render json: @widget.errors, status: :unprocessable_entity }
