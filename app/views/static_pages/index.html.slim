@@ -1,1 +1,16 @@
 .container    
+  h1 Projects:
+
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th Name
+        th Description
+        th Pages
+
+    tbody
+      - @projects.each do |project|
+        tr
+          td = project.name
+          td = project.description
+          td = link_to 'Try it!', "/demo_project/#{project.id}/page/#{project.pages[0].id}", class: 'btn btn-default'

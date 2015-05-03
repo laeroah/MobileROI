@@ -1,1 +1,13 @@
-.container    
+.container
+  .row.editor
+  	.col-xs-3
+    
+  	.col-xs-6
+      .mobile
+        .iphone6
+          img src=image_path('iPhone6-silver.png')
+        .page-img data-page-id=@page.id
+          img src=@page.image.url
+          - @page.widgets.each do |widget|
+            div class="link" style="position: absolute; top: #{widget.y}px; left: #{widget.x}px; height: #{widget.height}px; width: #{widget.width}px;"
+    .col-xs-3
