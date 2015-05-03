@@ -75,7 +75,7 @@ $ ->
       page_id = $(this).attr('data-page-id')
       $('.component', this).each ->
         widget_id = $(this).attr('id')
-        alert('id = '+ widget_id)
+        #alert('id = '+ widget_id)
         x = $(this).position().left
         y = $(this).position().top
         width = $(this).width()
@@ -134,7 +134,7 @@ $ ->
             dataType: 'json'
             success: (result) ->
               id = result['id']
-              alert('id = '+ result['id'])
+              #alert('id = '+ result['id'])
               $(self).attr('id' , id)
             error: (e1) ->
               alert 'Error - ' + e1.toString()
@@ -175,35 +175,34 @@ $ ->
     
   
   # add existing widgets
-#  Object.keys(gon.widgets_hash).forEach (page_id) ->
-#    widgets = gon.widgets_hash[page_id]
-#    for widget in widgets
-#      component = $('.component').clone()
-#      component.id = widget.id
-#      component.appendTo('.mobile .page-img[data-page-id=' + page_id + ']').uniqueId().css
-#        position: 'absolute'
-#        top: widget.y
-#        left: widget.x
-#        height: widget.height
-#        width: widget.width
-#      .draggable
-#        containment: '.mobile .page-img[data-page-id=' + page_id + ']'
-#        # snap: '.mobile .page-img'
-#        # snapMode: 'inner'
-#        # snapTolerance: '50'
-#        scroll: false
-#        # appendTo: '.mobile .page-img.current'
-#        start: ->
-#          change_component component
-#        stop: (event, ui) ->
-#          console.log ui.position, ui.size
-#      .resizable
-#        start: ->
-#          change_component component
-#        stop: (event, ui) ->
-#          console.log ui.position, ui.size
-#      .click ->
-#        change_component this
-#
-#      component.addClass(widget.widget_type)
-#      change_component component
+  Object.keys(gon.widgets_hash).forEach (page_id) ->
+    widgets = gon.widgets_hash[page_id]
+    for widget in widgets
+      component = $('.component').clone()
+      $(component).attr('id', widget.id)
+      component.appendTo('.mobile .page-img[data-page-id=' + page_id + ']').css
+        position: 'absolute'
+        top: widget.y
+        left: widget.x
+        height: widget.height
+        width: widget.width
+      .draggable
+        containment: '.mobile .page-img[data-page-id=' + page_id + ']'
+        # snap: '.mobile .page-img'
+        # snapMode: 'inner'
+        # snapTolerance: '50'
+        scroll: false
+        # appendTo: '.mobile .page-img.current'
+        start: ->
+          change_component component
+        stop: (event, ui) ->
+          console.log ui.position, ui.size
+      .resizable
+        start: ->
+          change_component component
+        stop: (event, ui) ->
+          console.log ui.position, ui.size
+      .click ->
+        change_component this
+
+      component.addClass(widget.widget_type)
