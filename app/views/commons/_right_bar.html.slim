@@ -13,4 +13,3 @@
     .form-group.pages
       label Link to another page
       = select_tag 'pages', options_from_collection_for_select(@project.pages, :id, :name), prompt: 'select a page', class: 'form-control'
-    button.delete.btn.btn-default Delete Widget
