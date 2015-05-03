@@ -51,6 +51,9 @@ $ ->
 
   $('.right-bar .property button.delete').click ->
     if current_component?
+      page = $('.mobile .page-img.current')
+      project_id = $(page).attr('project-id')
+      page_id = $(page).attr('data-page-id')
       widget_id = $(current_component).attr('id')
       if widget_id?
         $.ajax
@@ -59,6 +62,7 @@ $ ->
           contentType: 'application/x-www-form-urlencoded'
           dataType: 'json'
           success: (msg) ->
+
           error: (e1) ->
             alert 'Error - ' + e1.toString()
             return
@@ -71,6 +75,7 @@ $ ->
       page_id = $(this).attr('data-page-id')
       $('.component', this).each ->
         widget_id = $(this).attr('id')
+        alert('id = '+ widget_id)
         x = $(this).position().left
         y = $(this).position().top
         width = $(this).width()
@@ -80,11 +85,12 @@ $ ->
         if $(this).hasClass("link")
           link =  pages_links[widget_id]
           widget_type = "link"
+
+        self = this
         if widget_id?
           # update widget
-          short_widget_id = widget_id.substring(6)
           data = {
-            'widget[id]' : short_widget_id,
+            'widget[id]' : widget_id,
             'widget[page_id]' : page_id,
             'widget[link]' : link ,
             'widget[description]' : '',
@@ -96,13 +102,14 @@ $ ->
             'widget[widget_type]' : widget_type
           }
           console.log("page_id = " + page_id)
+
           $.ajax
             type: 'PUT'
-            url: '/projects/' + project_id + '/pages/' + page_id + '/widgets/' + short_widget_id + ".json?format=json"
+            url: '/projects/' + project_id + '/pages/' + page_id + '/widgets/' + widget_id + ".json?format=json"
             data: data
             contentType: 'application/x-www-form-urlencoded'
             dataType: 'json'
-            success: (msg) ->
+            success: (result) ->
             error: (e1) ->
               alert 'Error - ' + e1.toString()
               return
@@ -125,7 +132,10 @@ $ ->
             data: data
             contentType: 'application/x-www-form-urlencoded'
             dataType: 'json'
-            success: (msg) ->
+            success: (result) ->
+              id = result['id']
+              alert('id = '+ result['id'])
+              $(self).attr('id' , id)
             error: (e1) ->
               alert 'Error - ' + e1.toString()
               return
@@ -165,35 +175,35 @@ $ ->
     
   
   # add existing widgets
-  Object.keys(gon.widgets_hash).forEach (page_id) ->
-    widgets = gon.widgets_hash[page_id]
-    for widget in widgets
-      component = $('.component').clone()
-      component.id = widget.id
-      component.appendTo('.mobile .page-img[data-page-id=' + page_id + ']').uniqueId().css
-        position: 'absolute'
-        top: widget.y
-        left: widget.x
-        height: widget.height
-        width: widget.width
-      .draggable
-        containment: '.mobile .page-img[data-page-id=' + page_id + ']'
-        # snap: '.mobile .page-img'
-        # snapMode: 'inner'
-        # snapTolerance: '50'
-        scroll: false
-        # appendTo: '.mobile .page-img.current'
-        start: ->
-          change_component component
-        stop: (event, ui) ->
-          console.log ui.position, ui.size
-      .resizable
-        start: ->
-          change_component component
-        stop: (event, ui) ->
-          console.log ui.position, ui.size
-      .click ->
-        change_component this
-          
-      component.addClass(widget.widget_type)
-      change_component component
+#  Object.keys(gon.widgets_hash).forEach (page_id) ->
+#    widgets = gon.widgets_hash[page_id]
+#    for widget in widgets
+#      component = $('.component').clone()
+#      component.id = widget.id
+#      component.appendTo('.mobile .page-img[data-page-id=' + page_id + ']').uniqueId().css
+#        position: 'absolute'
+#        top: widget.y
+#        left: widget.x
+#        height: widget.height
+#        width: widget.width
+#      .draggable
+#        containment: '.mobile .page-img[data-page-id=' + page_id + ']'
+#        # snap: '.mobile .page-img'
+#        # snapMode: 'inner'
+#        # snapTolerance: '50'
+#        scroll: false
+#        # appendTo: '.mobile .page-img.current'
+#        start: ->
+#          change_component component
+#        stop: (event, ui) ->
+#          console.log ui.position, ui.size
+#      .resizable
+#        start: ->
+#          change_component component
+#        stop: (event, ui) ->
+#          console.log ui.position, ui.size
+#      .click ->
+#        change_component this
+#
+#      component.addClass(widget.widget_type)
+#      change_component component
