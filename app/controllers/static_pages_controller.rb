@@ -1,5 +1,10 @@
 class StaticPagesController < ApplicationController
   layout 'demo'
+  skip_before_filter :authenticate_user!
+  
+  def home
+  
+  end
   
   def index
     @projects = Array.new
