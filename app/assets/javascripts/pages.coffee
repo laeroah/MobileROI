@@ -20,10 +20,7 @@ $ ->
 
     # show new image
     $('.mobile .page-img[data-page-id=' + page_id + ']').addClass('current').show()
-    
-    # add existing widgets
-    widgets = gon.widgets[page_id]
-
+  
   $('.right-bar .property .pages select').change ->
     if current_component?
       if $(current_component).hasClass('link')
@@ -85,3 +82,38 @@ $ ->
       change_component this
 
     change_component component
+    
+  
+  # add existing widgets
+  Object.keys(gon.widgets_hash).forEach (page_id) ->
+    widgets = gon.widgets_hash[page_id]
+    for widget in widgets
+      component = $('.component').clone()
+      component.id = widget.id
+      component.appendTo('.mobile .page-img[data-page-id=' + page_id + ']').uniqueId().css
+        position: 'absolute'
+        top: widget.y
+        left: widget.x
+        height: widget.height
+        width: widget.width
+      .draggable
+        containment: '.mobile .page-img[data-page-id=' + page_id + ']'
+        # snap: '.mobile .page-img'
+        # snapMode: 'inner'
+        # snapTolerance: '50'
+        scroll: false
+        # appendTo: '.mobile .page-img.current'
+        start: ->
+          change_component component
+        stop: (event, ui) ->
+          console.log ui.position, ui.size
+      .resizable
+        start: ->
+          change_component component
+        stop: (event, ui) ->
+          console.log ui.position, ui.size
+      .click ->
+        change_component this
+          
+      component.addClass(widget.widget_type)
+      change_component component

@@ -6,9 +6,9 @@ class PagesController < ApplicationController
   # GET /pages.json
   def index
     @pages = @project.pages.all
-    gon.widgets = Hash.new()
+    gon.widgets_hash = Hash.new()
     for page in @pages
-      gon.widgets[page.id] = page.widgets
+      gon.widgets_hash[page.id] = page.widgets
     end
   end
 
