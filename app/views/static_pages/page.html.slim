@@ -10,4 +10,5 @@
           img src=@page.image.url
           - @page.widgets.each do |widget|
             div class="link" style="position: absolute; top: #{widget.y}px; left: #{widget.x}px; height: #{widget.height}px; width: #{widget.width}px;"
+              a href="/demo_project/#{@project.id}/page/#{widget.link}" class="fill-div"
     .col-xs-3
