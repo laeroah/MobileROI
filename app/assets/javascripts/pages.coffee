@@ -178,7 +178,7 @@ $ ->
   Object.keys(gon.widgets_hash).forEach (page_id) ->
     widgets = gon.widgets_hash[page_id]
     for widget in widgets
-      component = $('.component').clone()
+      component = $('.right-bar .components .component').clone()
       $(component).attr('id', widget.id)
       component.appendTo('.mobile .page-img[data-page-id=' + page_id + ']').css
         position: 'absolute'
