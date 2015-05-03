@@ -51,6 +51,17 @@ $ ->
 
   $('.right-bar .property button.delete').click ->
     if current_component?
+      widget_id = $(current_component).attr('id')
+      if widget_id?
+        $.ajax
+          type: 'DELETE'
+          url: '/projects/' + project_id + '/pages/' + page_id + '/widgets/' + widget_id + ".json"
+          contentType: 'application/x-www-form-urlencoded'
+          dataType: 'json'
+          success: (msg) ->
+          error: (e1) ->
+            alert 'Error - ' + e1.toString()
+            return
       $(current_component).remove()
       current_component = null
 
