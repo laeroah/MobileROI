@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   root 'projects#index'
   devise_for :users
-
   resources :projects do
     resources :pages do
       resources :widgets
     end 
   end
-  
+
+
+
   get 'demo', :to => 'static_pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
