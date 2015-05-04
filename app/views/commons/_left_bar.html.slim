@@ -2,5 +2,5 @@
   .list-group
     - @pages.each do |page|
       .list-group-item.page-img data-page-id=page.id
-        = image_tag page.image.url, size: '70x160'
+        = image_tag page.image.url, size: '91x160'
     = link_to 'Add Page', new_project_page_path(@project), class: 'list-group-item'
